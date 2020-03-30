@@ -11,7 +11,6 @@ from product.models import Category
 from datetime import datetime
 bot = telebot.TeleBot(settings.BOT_TOKEN)
 
-
 def web_hook_view(request):
     if request.method == 'POST':
         bot.process_new_updates([telebot.types.Update.de_json(request.body.decode("utf-8"))])

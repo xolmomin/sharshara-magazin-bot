@@ -125,4 +125,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-BOT_TOKEN = '1030262118:AAHaeROcKCScuEdaKF1bRmvYLscrx-zXTFE'
+BOT_TOKEN = '667827585:AAGUcBsoF1ZzP9weW6-98v71Y-XlvxH7g2A'
