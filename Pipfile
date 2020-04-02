@@ -8,6 +8,7 @@ Django="*"
 djangorestframework="*"
 Pillow="*"
 pyTelegramBotAPI="*"
+gunicorn="*"
 
 [dev-packages]
 
