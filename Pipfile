@@ -9,6 +9,7 @@ djangorestframework="*"
 Pillow="*"
 pyTelegramBotAPI="*"
 gunicorn="*"
+whitenoise="*"
 
 [dev-packages]
 
