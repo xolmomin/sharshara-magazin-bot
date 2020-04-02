@@ -4,9 +4,11 @@ from product.models import Product
 
 
 class TgUser(TimeStampedModel):
-    user_id = models.IntegerField()
+    user_id = models.IntegerField(unique=True)
     step = models.IntegerField(default=0)
     first_name = models.CharField(max_length=100, null=True, blank=True)
+    address = models.CharField(max_length=100, null=True, blank=True)
+    number = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return f'{self.user_id}'
@@ -25,4 +27,3 @@ class Order(TimeStampedModel):
 
     def __str__(self):
         return f'{str(self.user.user_id) | self.product.name | str(self.qty)}'
-

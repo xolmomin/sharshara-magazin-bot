@@ -15,11 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from telegram.views import web_hook_view
+from telegram.views import UpdateBot
 from django.views.decorators.csrf import csrf_exempt
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('secret/', csrf_exempt(web_hook_view)),
+    path('secret', csrf_exempt(UpdateBot.as_view())),
 ]
