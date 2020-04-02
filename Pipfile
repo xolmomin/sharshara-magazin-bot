@@ -4,11 +4,20 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+asgiref="*"
+certifi="*"
+chardet="*"
 Django="*"
 djangorestframework="*"
+gunicorn="*"
+idna="*"
 Pillow="*"
 pyTelegramBotAPI="*"
-gunicorn="*"
+pytz="*"
+requests="*"
+six="*"
+sqlparse="*"
+urllib3="*"
 whitenoise="*"
 
 [dev-packages]
