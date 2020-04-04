@@ -5,6 +5,7 @@ USER_STEP = {
     'ENTER_QTY': 3,
     'ENTER_PHONE_NUMBER': 4,
     'ENTER_ADDRESS': 5,
+    'CONFIRM': 6,
 }
 #
 # USER_STEP['ENTER_FIRST_NAME']: enter_first_name,

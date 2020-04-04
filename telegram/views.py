@@ -50,7 +50,7 @@ def start_message(message):
 
         text = 'Assalomu alaykum, {}!' \
                '\nMen BAXT XK ning Toshkentdagi rasmiy botiman.' \
-               '\nMen Sizni mahsulotlarimiz bilan tanistirib, buyurtma berishda yordam beraman.' \
+               '\nMen Sizni mahsulotlarimiz bilan tanishtirib, buyurtma berishda yordam beraman.' \
                '\nMahsulotlarni 🥄 Katalog bo‘limidan tanlang' \
             .format(message.chat.first_name)
         send_text_choice(message, text)
@@ -112,12 +112,36 @@ def cancel_book(message):
 
 @bot.message_handler(regexp=BUTTONS['CONFIRM'])
 def confirm_book(message):
-    text = 'Rahmat! Buyurtmangiz ishlov berish uchun jo\'natildi 👍\n\n' \
-           'Operator javobini kuting.' \
-           '\n\nBuyurtma raqami №'
-    # bot.send_message(514411336, message.message_id - 1)  # Harry
-    bot.send_message(514411336, message.message_id-1)  # Harry
-    send_text_choice(message, text)
+    user = TgUser.objects.filter(user_id=message.from_user.id, step=USER_STEP['CONFIRM']).last()
+    user.step = USER_STEP['DEFAULT']
+    user.save()
+    address = "Location" if "/+/" in user.address else user.address
+    text = 'Ism:' + user.first_name + f'\nManzil: {address}\nTel: {user.number}\n'
+    cart_qs = Cart.objects.filter(status=True, user__user_id=message.from_user.id).annotate(
+        total=F('product__price') * F('qty'))
+    total_sum = 0
+    for cart in cart_qs:
+        total_sum += cart.total
+        text += f'{cart.product.name} x{cart.qty} = {cart.total}\n'
+    text += f'Jami: {total_sum}'
+    order = Order()
+    order.history = text
+    order.user = user
+    order.save()
+
+    text_last = 'Rahmat! Buyurtmangiz ishlov berish uchun jo\'natildi 👍\n\n' \
+                'Operator javobini kuting.' \
+                '\n\nBuyurtma raqami № ' + str(order.id)
+    bot.send_message(message.from_user.id, text_last)
+
+    ### adminga yuborish
+    if "/+/" in user.address:
+        bot.send_location(514411336, user.address.split('/+/')[1], user.address.split('/+/')[0])
+        bot.send_location(711292235, user.address.split('/+/')[1], user.address.split('/+/')[0])
+
+    bot.send_message(514411336, text)  # Harry
+    bot.send_message(711292235, text)  # Stay at home
+    send_text_choice(message, 'Biror narsa olamizmi yana?')
 
 
 @bot.message_handler(regexp=BUTTONS['CREATE_ORDER'])
@@ -197,20 +221,10 @@ def news(message):
 @bot.message_handler(regexp=BUTTONS['MY_ORDERS'])
 def my_orders(message):
     orders = Order.objects.filter(user_id=message.from_user.id)
-    text = ''
+
     if orders:
-        cart_qs = Cart.objects.filter(status=True, user__user_id=message.from_user.id).annotate(
-            total=F('product__price') * F('qty'))
-        user = TgUser.objects.filter(user_id=message.from_user.id, step=USER_STEP['ENTER_FIRST_NAME']).last()
         for order in orders:
-            text = f'Buyurtma №{order.id}\n\n'
-            text += 'Ismingiz: ' + message.text + f'\nTelefon raqami {user.number}\n\nSavatda: \n'
-            total_sum = 0
-            for cart in cart_qs:
-                total_sum += cart.total
-                text += f'{cart.product.name} (x{cart.qty}) {cart.total} so\'m\n'
-            text += f'\nBuyurtmaning yakuniy summasi: {total_sum}so\'m'
-            bot.send_message(message.from_user.id, text)
+            bot.send_message(message.from_user.id, order.history)
     else:
         text = 'Hozirda hech narsa yoq'
     bot.send_message(message.from_user.id, text)

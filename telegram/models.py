@@ -23,6 +23,7 @@ class Cart(TimeStampedModel):
 
 class Order(TimeStampedModel):
     user = models.ForeignKey(TgUser, on_delete=models.SET_NULL, null=True)
+    history = models.CharField(max_length=400, null=True, blank=True)
     products = models.ManyToManyField(Cart)
 
     def __str__(self):

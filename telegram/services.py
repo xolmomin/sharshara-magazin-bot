@@ -8,8 +8,14 @@ from product.models import Product, Category
 
 def enter_first_name(message, bot):
     user = TgUser.objects.filter(user_id=message.from_user.id, step=USER_STEP['ENTER_FIRST_NAME']).last()
-    user.first_name = 'Ismingiz: ' + message.text
-    text = user.first_name + f'\nTelefon raqami {user.number}\n\nSavatda: \n'
+    user.first_name = message.text
+    user.step = USER_STEP['CONFIRM']
+    user.save()
+    if "/+/" in user.address:
+        address = "Location"
+    else:
+        address = user.address
+    text = 'Ism: ' + user.first_name + f'\nManzil: {address}\nTelefon raqami: {user.number}\n\nSavatda: \n'
     cart_qs = Cart.objects.filter(status=True, user__user_id=message.from_user.id).annotate(
         total=F('product__price') * F('qty'))
     total_sum = 0
@@ -17,7 +23,6 @@ def enter_first_name(message, bot):
         total_sum += cart.total
         text += f'{cart.product.name} (x{cart.qty}) {cart.total} so\'m\n'
     text += f'\nBuyurtmaning yakuniy summasi: {total_sum}so\'m'
-
     text += '\nToshkent shahar ichida yetkazib berish bepul'
     reply_markup = ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
     reply_markup.row(KeyboardButton(BUTTONS['CONFIRM']))
@@ -103,10 +108,6 @@ def enter_phone_number(message, bot):
     else:
         phone_num = message.text
     if phone_num.isdigit() and len(phone_num) == 12:
-        user = TgUser.objects.filter(user_id=message.from_user.id).get()
-        user.step = USER_STEP['DEFAULT']
-        user.save()
-
         TgUser.objects.filter(user_id=message.from_user.id).update(number=int(phone_num))
         text = 'Joylashgan joyingizni yuboring yoki ' \
                'aniq manzilingizni ko‘rsating (tuman, ko‘cha, uy, xonadon)' \
@@ -129,7 +130,10 @@ def enter_address(message, bot):
     user_id = message.from_user.id
     user = TgUser.objects.filter(user_id=user_id).get()
     user.step = USER_STEP['ENTER_FIRST_NAME']
-    user.address = message.location
+    if message.location:
+        user.address = str(message.location.longitude) + "/+/" + str(message.location.latitude)
+    else:
+        user.address = message.text
     user.save()
     text = 'O\'z ismingizni botga yuboring'
 
