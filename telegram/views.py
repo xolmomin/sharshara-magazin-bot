@@ -18,12 +18,6 @@ from .services import enter_first_name, get_products, get_product, enter_qty_for
 bot = telebot.TeleBot(settings.BOT_TOKEN)
 
 
-# sharsharamagazinbot
-
-# baxtuzbot
-# manageuzbot
-# testingforprogrambot
-
 class UpdateBot(APIView):
     def post(self, request):
         json_string = request.body.decode('UTF-8')
@@ -45,14 +39,14 @@ def send_text_choice(message, text):
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
+    text = 'Assalomu alaykum, {}!' \
+           '\nToshkentdagi Asl-Baraka Kolbasa maxsulotlari do\'konining rasmiy botiman.' \
+           '\nMen Sizni mahsulotlarimiz bilan tanistirib, buyurtma berishda yordam beraman.' \
+           '\nMahsulotlarni 🥄 Katalog bo‘limidan tanlang' \
+        .format(message.chat.first_name)
     if TgUser.objects.filter(user_id=message.from_user.id).exists():
         TgUser.objects.filter(user_id=message.from_user.id).update(step=0)
 
-        text = 'Assalomu alaykum, {}!' \
-               '\nMen BAXT XK ning Toshkentdagi rasmiy botiman.' \
-               '\nMen Sizni mahsulotlarimiz bilan tanishtirib, buyurtma berishda yordam beraman.' \
-               '\nMahsulotlarni 🥄 Katalog bo‘limidan tanlang' \
-            .format(message.chat.first_name)
         send_text_choice(message, text)
 
 
@@ -60,29 +54,8 @@ def start_message(message):
         TgUser.objects.create(user_id=message.from_user.id, step=USER_STEP['ENTER_FIRST_NAME'])
         TgUser.objects.filter(user_id=message.from_user.id).update(step=0)
 
-        text = 'Assalomu alaykum, {}!' \
-               '\nMen BAXT XK ning Toshkentdagi rasmiy botiman.' \
-               '\nMen Sizni mahsulotlarimiz bilan tanistirib, buyurtma berishda yordam beraman.' \
-               '\nMahsulotlarni 🥄 Katalog bo‘limidan tanlang' \
-            .format(message.chat.first_name)
         send_text_choice(message, text)
-        # text = 'Пожалуйста, выберите язык / Iltimos, tilingizni tanlang ⬇️'
-        # reply_markup = InlineKeyboardMarkup()
-        # reply_markup.add(InlineKeyboardButton("🇺🇿 uz", callback_data='🇺🇿 uz'),
-        #                  InlineKeyboardButton("🇷🇺 ru", callback_data='🇷🇺 ru'))
-        #
-        # bot.send_message(message.from_user.id, text, reply_markup=reply_markup)
 
-
-# @bot.message_handler(commands=['start'])
-# def send_text(message):
-#     text = 'Пожалуйста, выберите язык / Iltimos, tilingizni tanlang ⬇️'
-#
-#     reply_markup = InlineKeyboardMarkup()
-#     reply_markup.add(InlineKeyboardButton("🇺🇿 uz", callBACK_MENU_data='🇺🇿 uz'),
-#                      InlineKeyboardButton("🇷🇺 ru", callBACK_MENU_data='🇷🇺 ru'))
-#
-#     bot.send_message(message.from_user.id, text, reply_markup=reply_markup)
 
 @bot.message_handler(regexp=BUTTONS['BACK_MENU'])
 def back_menu(message):
@@ -93,9 +66,13 @@ def back_menu(message):
 
 
 @bot.message_handler(regexp=BUTTONS['CONTACT'])
-def contact_info(message):
-    text = '📞 Telefon: \n+99890-000-00-00\n🌐 Ijtimoiy tarmoqlar:\n'
-    send_text_choice(message, text)
+def contact_admin(message):
+    text = 'Asl-Baraka Kolbasa\n' \
+           '📞 Telefon:\n' \
+           '+99890-956-58-06\n' \
+           '+99871-225-72-10\n' \
+           '🌐 Ijtimoiy tarmoqlar:\n@AAA_765\n'
+    bot.send_message(message.from_user.id, text)
 
 
 @bot.message_handler(regexp=BUTTONS['CLEAR_CART'])
@@ -136,11 +113,9 @@ def confirm_book(message):
 
     ### adminga yuborish
     if "/+/" in user.address:
-        bot.send_location(514411336, user.address.split('/+/')[1], user.address.split('/+/')[0])
-        bot.send_location(711292235, user.address.split('/+/')[1], user.address.split('/+/')[0])
+        bot.send_location(2466604, user.address.split('/+/')[1], user.address.split('/+/')[0])
 
-    bot.send_message(514411336, text)  # Harry
-    bot.send_message(711292235, text)  # Stay at home
+    bot.send_message(2466604, text)  # Abdulla
     send_text_choice(message, 'Biror narsa olamizmi yana?')
 
 
@@ -202,7 +177,7 @@ def catalog(message):
            'Yetkazib berish shartlari:\n' \
            '— Yetkazib berish bepul, ammo faqat Toshkent shahri ichida ishlaydi;\n' \
            '— Minimal buyurtma: 80 000 so‘m;\n' \
-           '— Soat 00:00 dan 17:00 gacha rasmiylashtirilgan buyurtmalar keyingi kuni yetkazib beriladi; \n' \
+           '— 17:00 gacha rasmiylashtirilgan buyurtmalar o\'sha kunning o\'zida yetkazib beriladi; \n' \
            '— Soat  17:00 dan 00:00 gacha rasmiylashtirilgan buyurtmalar bir kalendar kunidan keyin yetkaziladi*. \n' \
            '*Yakshanba va davlat bayramlari ish kunlari hisoblanmaydi.'
 
@@ -227,15 +202,6 @@ def my_orders(message):
             bot.send_message(message.from_user.id, order.history)
     else:
         text = 'Hozirda hech narsa yoq'
-    bot.send_message(message.from_user.id, text)
-
-
-@bot.message_handler(regexp=BUTTONS['CONTACT'])
-def contact_admin(message):
-    text = 'NISHON BAXT XK\n' \
-           '📞 Telefon:\n' \
-           '+99899-999-00-00\n' \
-           '🌐 Ijtimoiy tarmoqlar:\n'
     bot.send_message(message.from_user.id, text)
 
 

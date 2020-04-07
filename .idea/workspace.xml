@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad0c35f5-b464-41d5-9ebc-2bff765a8fdf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/mini_bot.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/product/apple-fruit-500x500.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/product/purina-can-dogs-eat-real-meat-500x300.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/product/shutterstock_1031664748-800x450.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram/const.py" beforeDir="false" afterPath="$PROJECT_DIR$/telegram/const.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/telegram/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/telegram/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/telegram/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/telegram/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,8 +59,8 @@
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="M:/Dip Project/back" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -136,7 +125,10 @@
       <workItem from="1585801647551" duration="18802000" />
       <workItem from="1585848480748" duration="21912000" />
       <workItem from="1585974935209" duration="1673000" />
-      <workItem from="1586014436900" duration="1499000" />
+      <workItem from="1586014436900" duration="2343000" />
+      <workItem from="1586017282718" duration="7775000" />
+      <workItem from="1586158720035" duration="5000" />
+      <workItem from="1586258998631" duration="1136000" />
     </task>
     <servers />
   </component>
@@ -177,14 +169,15 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="9" y="12" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1585648784717" />
-    <state x="548" y="172" key="FileChooserDialogImpl" timestamp="1586016344848">
+    <state x="548" y="172" key="FileChooserDialogImpl" timestamp="1586017143075">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="548" y="172" key="FileChooserDialogImpl/0.0.1536.834/1920.0.1280.994@0.0.1536.834" timestamp="1586016344848" />
+    <state x="548" y="172" key="FileChooserDialogImpl/0.0.1536.834/1920.0.1280.994@0.0.1536.834" timestamp="1586017143075" />
     <state x="548" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1585926318218" />
-    <state x="639" y="311" width="614" height="212" key="Github.ShareDialog" timestamp="1585567252038">
+    <state x="639" y="311" width="614" height="212" key="Github.ShareDialog" timestamp="1586017458788">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
+    <state x="639" y="311" key="Github.ShareDialog/0.0.1536.834/1920.0.1280.994@0.0.1536.834" timestamp="1586017458788" />
     <state x="639" y="311" width="614" height="212" key="Github.ShareDialog/0.0.1536.834@0.0.1536.834" timestamp="1585567252038" />
     <state width="1493" height="283" key="GridCell.Tab.0.bottom" timestamp="1585940426517">
       <screen x="0" y="0" width="1536" height="834" />
@@ -218,31 +211,33 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state width="1493" height="283" key="GridCell.Tab.1.right/0.0.1536.834@0.0.1536.834" timestamp="1585940426517" />
-    <state x="277" y="60" key="SettingsEditor" timestamp="1585848525931">
+    <state x="277" y="60" key="SettingsEditor" timestamp="1586016932060">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
+    <state x="277" y="60" key="SettingsEditor/0.0.1536.834/1920.0.1280.994@0.0.1536.834" timestamp="1586016932060" />
     <state x="277" y="60" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1585848525931" />
-    <state x="722" y="150" key="Vcs.Push.Dialog.v2" timestamp="1586016333805">
+    <state x="722" y="150" key="Vcs.Push.Dialog.v2" timestamp="1586017173426">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="722" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834/1920.0.1280.994@0.0.1536.834" timestamp="1586016333805" />
+    <state x="722" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834/1920.0.1280.994@0.0.1536.834" timestamp="1586017173426" />
     <state x="722" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1585567063351" />
     <state x="349" y="72" key="com.intellij.database.dbimport.ImportDialog" timestamp="1585929461305">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="349" y="72" key="com.intellij.database.dbimport.ImportDialog/0.0.1536.834@0.0.1536.834" timestamp="1585929461305" />
-    <state x="88" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1585976176084">
+    <state x="88" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1586259115217">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="88" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.834/1920.0.1280.994@0.0.1536.834" timestamp="1585976176084" />
-    <state x="88" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.834@0.0.1536.834" timestamp="1585801956733" />
+    <state x="88" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.834/1920.0.1280.994@0.0.1536.834" timestamp="1586259115217" />
+    <state x="88" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.834@0.0.1536.834" timestamp="1586158719119" />
     <state x="463" y="15" width="738" height="804" key="find.popup" timestamp="1585632161040">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="463" y="15" width="738" height="804" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1585632161040" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1585637827588">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1586016536043">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834/1920.0.1280.994@0.0.1536.834" timestamp="1586016536043" />
     <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1585637827588" />
   </component>
   <component name="XDebuggerManager">

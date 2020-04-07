@@ -22,9 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'cogl+3aob#a6#hdjpl$_&1&^46zt1@fvf!7)r5#n+km7#0qefm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['www.ph.uz' , 'ph.uz', '167.71.45.171']
 
 # Application definition
 
@@ -123,5 +123,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-BOT_TOKEN = '995005517:AAGRlQtGbRpBFKAzvgLglAQZy7_0gdrbqH0'
-# sharsharamagazinbot
+BOT_TOKEN = '1117180892:AAE999geTJTUolN9SdI_N82FnbOYEOFj7Gc'
+# Asl_baraka_bot
