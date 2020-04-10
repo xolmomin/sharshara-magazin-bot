@@ -24,7 +24,7 @@ SECRET_KEY = 'cogl+3aob#a6#hdjpl$_&1&^46zt1@fvf!7)r5#n+km7#0qefm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.ph.uz' , 'ph.uz', '167.71.45.171']
+ALLOWED_HOSTS = ['www.ph.uz' , 'ph.uz', '167.71.45.171', '*']
 
 # Application definition
 
